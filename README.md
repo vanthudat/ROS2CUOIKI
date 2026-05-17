@@ -1,4 +1,3 @@
-# ROS2CUOIKI
 # ROS2CUOIKI - AGV Mecanum, SLAM va Navigation
 
 Bai cuoi ki tao ban do bang SLAM Toolbox, chay Navigation2 va danh gia chat luong ban do.
