@@ -1,11 +1,16 @@
 # ROS2CUOIKI - AGV Mecanum, SLAM va Navigation
 
-Bai cuoi ki tao ban do bang SLAM Toolbox, chay Navigation2 va danh gia chat luong ban do.
+Repo nay chua bai lam ROS 2 cho mo phong AGV 4 banh mecanum co tay may trong Gazebo, hien thi tren RViz, dieu khien bang ban phim, tao ban do bang SLAM Toolbox, chay Navigation2 va danh gia chat luong ban do.
 
 Package chinh: `agv_ros`
 
 ## Noi dung da lam
 
+- Xay dung mo hinh robot AGV tu `urdf/demo2.urdf`, gom khung xe, 4 banh mecanum, lidar, camera va tay may 2 khop.
+- Cau hinh Gazebo + `ros2_control` de spawn robot, dieu khien van toc banh va dieu khien vi tri tay may.
+- Viet node dieu khien dong hoc mecanum tu `/cmd_vel` sang `/wheel_velocity_controller/commands`.
+- Viet teleop ban phim cho robot di tien/lui, ngang trai/phai, cheo va xoay tai cho.
+- Viet teleop ban phim cho tay may qua `/arm_position_controller/commands`.
 - Tao cac launch file cho mo phong, RViz, SLAM va Navigation2.
 - Cau hinh SLAM Toolbox de quet map tu laser scan trong moi truong Gazebo.
 - Cau hinh Navigation2 voi AMCL, map server, planner, controller va costmap cho robot omni/mecanum.
@@ -27,6 +32,17 @@ agv_ros/
 `-- worlds/                 # World Gazebo
 ```
 
+## Yeu cau moi truong
+
+Du an duoc viet cho ROS 2 Humble tren Ubuntu, can cac goi chinh:
+
+- `gazebo_ros`, `gazebo_plugins`, `gazebo_ros2_control`
+- `robot_state_publisher`, `joint_state_publisher_gui`, `rviz2`
+- `controller_manager`, `joint_state_broadcaster`
+- `joint_trajectory_controller`, `position_controllers`, `velocity_controllers`
+- `slam_toolbox`
+- `nav2_bringup`, `nav2_map_server`
+- Python packages cho danh gia map: `numpy`, `Pillow`, `scipy`, `matplotlib`, `pyyaml`
 
 ## Build workspace
 
@@ -169,7 +185,7 @@ Mot so tham so da khao sat:
 Terminal 1: chay Gazebo + Navigation2 voi map da luu:
 
 ```bash
-ros2 launch agv_ros navigation_hexagon.launch.py map:=~/agv_ros/maps/house_mtd_005.yaml
+ros2 launch agv_ros navigation_hexagon.launch.py map:=~/agv_ros/maps/house_mtd_030.yaml
 ```
 
 Terminal 2: mo RViz rieng de dat goal va theo doi duong di:
